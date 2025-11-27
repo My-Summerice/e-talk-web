@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# e-talk-web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+e-talk-web 是一个基于 React + TypeScript + Vite 构建的现代化 AI 聊天应用前端。它提供了流畅的对话体验、强大的文档管理功能以及美观的 UI 设计。
 
-Currently, two official plugins are available:
+## ✨ 主要功能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🤖 AI 智能对话
+- **流式响应**：实时显示 AI 回复，体验流畅自然。
+- **Markdown 渲染**：支持代码高亮、表格、列表等富文本格式。
+- **知识库引用**：当 AI 回复引用了知识库内容时，会以类似"元宝"风格的精美卡片展示引用来源，支持折叠/展开。
 
-## React Compiler
+### 📚 文档管理
+- **全局知识库**：在侧边栏管理全局知识库文档，支持上传、列表展示和删除。
+- **会话文档**：支持在当前会话中上传文档，实现基于特定上下文的对话。
+- **多格式支持**：支持 PDF, Word (.docx, .doc), Excel (.xlsx, .xls), Markdown (.md), HTML, TXT 等多种文件格式。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 💬 会话管理
+- **历史记录**：自动保存会话历史，方便随时回顾。
+- **多会话切换**：侧边栏实时刷新会话列表，支持新建和切换会话。
+- **自动刷新**：发送消息、切换 Tab 或新建会话时，数据状态自动同步。
 
-## Expanding the ESLint configuration
+### 🎨 现代化 UI/UX
+- **极简设计**：去除多余边框，采用柔和阴影和圆角设计。
+- **Tab 导航**：侧边栏集成"历史"、"知识库"、"设置"三个功能模块，切换便捷。
+- **交互优化**：输入框聚焦效果、消息气泡样式、加载动画等细节打磨。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ 技术栈
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **核心框架**：[React](https://react.dev/) (v18)
+- **开发工具**：[Vite](https://vitejs.dev/)
+- **语言**：[TypeScript](https://www.typescriptlang.org/)
+- **样式**：[Tailwind CSS](https://tailwindcss.com/)
+- **图标**：[Lucide React](https://lucide.dev/)
+- **HTTP 请求**：[Axios](https://axios-http.com/)
+- **Markdown 渲染**：[react-markdown](https://github.com/remarkjs/react-markdown)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 快速开始
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 环境要求
+- Node.js >= 16
+
+### 安装依赖
+
+```bash
+npm install
+# 或者
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 启动开发服务器
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
+# 或者
+yarn dev
 ```
+
+应用将在 `http://localhost:5173` (默认端口) 启动。
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+## 📂 项目结构
+
+```
+src/
+├── components/        # UI 组件 (ChatBubble, Sidebar, FileUpload 等)
+├── services/          # API 服务 (documentService.ts)
+├── App.tsx           # 主应用逻辑
+├── main.tsx          # 入口文件
+└── index.css         # 全局样式 (Tailwind 指令)
+```
+
+## 📝 环境变量
+
+在项目根目录创建 `.env` 文件配置后端 API 地址：
+
+```env
+VITE_API_BASE_URL=http://your-backend-api-url
+```
+
+## 🤝 贡献
+
+欢迎提交 Issue 或 Pull Request 来改进这个项目！
+
+## 📄 许可证
+
+MIT License
